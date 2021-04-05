@@ -87,24 +87,11 @@ cat > /usr/local/etc/xray/config.json <<-EOF
             }
         }
     ],
-    "outbounds": 
-    [
-        {"protocol": "freedom","tag": "direct","settings": {}},
-        {"protocol": "freedom","tag": "directv6","settings": {"domainStrategy": "UseIPv6"}},
-        {"protocol": "blackhole","tag": "blocked","settings": {}},
-        {"protocol": "freedom","tag": "twotag","streamSettings": {"network": "domainsocket","dsSettings": {"path": "/usr/local/etc/xray/ss","abstract": true}}}
-    ],
-
-    "routing": 
-    {
-        "rules": 
-        [
-            {"type": "field","outboundTag": "directv6","domain": ["geosite:netflix","geosite:google","geosite:youtube"]},
-            {"type": "field","inboundTag": ["onetag"],"outboundTag": "twotag"},
-            {"type": "field","outboundTag": "blocked","ip": ["geoip:private"]},
-            {"type": "field","outboundTag": "blocked","domain": ["geosite:private","geosite:category-ads-all"]}
-        ]
-    }
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
 }
 EOF
 #ssl certificate
