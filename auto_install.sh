@@ -119,11 +119,11 @@ systemctl restart xray
 #download website template
 wget https://github.com/cqlp1314/storage/raw/main/html.tar.gz
 tar -xzvf html.tar.gz 
-mkdir -p /var/www/html
+mkdir -p /var/www/html/
 mv var/www/html/* /var/www/html/*
 rm -r var/
 #install and configure caddy
-wget https://github.com/cqlp1314/storage/raw/main/auto_caddy.sh
+wget https://github.com/cqlp1314/storage/raw/main/auto_caddy.sh && chmod +x auto_caddy.sh
 ./auto_caddy.sh $domain $trojan_passwd
 #download trojan-go
 wget -O /usr/local/etc/trojan-go/trojan-go-linux-adm64.zip https://github.com/p4gefau1t/trojan-go/releases/download/v0.8.2/trojan-go-linux-amd64.zip
