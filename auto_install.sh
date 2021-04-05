@@ -122,7 +122,7 @@ systemctl restart xray
 wget https://github.com/cqlp1314/storage/raw/main/html.tar.gz
 tar -xzvf html.tar.gz 
 mkdir -p /var/www/html/
-mv var/www/html/* /var/www/html/*
+mv var/www/html/* /var/www/html/
 rm -r var/
 #install and configure caddy
 wget https://github.com/cqlp1314/storage/raw/main/auto_caddy.sh && chmod +x auto_caddy.sh
