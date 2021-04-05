@@ -10,7 +10,7 @@ trap 'rm -f "$TMPFILE"' EXIT
 TMPFILE=$(mktemp) || exit 1
 
 ########
-[[ $# == 1 ]] && domain="$1" || { echo Err !!! Useage: bash this_script.sh my.domain.com; exit 1; }
+[[ $# == 2 ]] && domain="$1" || { echo Err !!! Useage: bash this_script.sh my.domain.com passwd; exit 1; }
 ########
 
 # dpkg install caddy
