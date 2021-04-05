@@ -227,7 +227,7 @@ cat > trojan-go_client.json <<-EOF
     },
     "websocket":{
       "enabled":true,
-      "path":"\$path_trojan",
+      "path":"$path_trojan",
       "host":"$domain"
     } 
 }
