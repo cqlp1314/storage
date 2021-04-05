@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #install xray
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
-mkdir /usr/local/etc/trojan-go/
-mkdir /root/mine/renew/domain_certificate
-mkdir /root/mine/telegram
+mkdir -p /usr/local/etc/trojan-go/
+mkdir -p /root/mine/renew/domain_certificate
+mkdir -p /root/mine/telegram
 read -p "请输入域名:" domain
 read -p "该服务器名称(Euserv2):" server_name
 uuid_xtls="$(cat '/proc/sys/kernel/random/uuid')"
@@ -110,6 +110,7 @@ EOF
 #ssl certificate
 apt install certbot
 certbot certonly --standalone --email cqlp2020@gmail.com -d $domain
+read -p "please push enter to continue:"
 cp /etc/letsencrypt/live/$domain/* /usr/local/etc/xray/ssl/
 systemctl restart xray
 #download website template
@@ -119,6 +120,7 @@ mkdir -p /var/www/html
 mv var/www/html/* /var/www/html/*
 rm -r var/
 #install and configure caddy
+wget https://github.com/cqlp1314/storage/raw/main/auto_caddy.sh
 ./auto_caddy.sh $domain $trojan_passwd
 #download trojan-go
 wget -O /usr/local/etc/trojan-go/trojan-go-linux-adm64.zip https://github.com/p4gefau1t/trojan-go/releases/download/v0.8.2/trojan-go-linux-amd64.zip
