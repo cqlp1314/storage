@@ -3,6 +3,7 @@ result=$(/usr/bin/certbot renew --pre-hook "systemctl stop caddy" --post-hook "s
 if [[ $result == *"succeeded"* ]];then
   /root/mine/telegram/send_message.sh "$1 domain certificate renew succeeded!"
   cp /etc/letsencrypt/live/$domain/* /usr/local/etc/xray/ssl/
+  chmod 644 /usr/local/etc/xray/ssl/*
   systemctl restart xray
 elif [[ $result == *"No renewals"* ]];then
   /root/mine/telegram/send_message.sh "$1 domain certificate do not need renew!"
