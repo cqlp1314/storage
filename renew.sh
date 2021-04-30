@@ -1,7 +1,7 @@
 #!/bin/bash
 result=$(/usr/bin/certbot renew --pre-hook "systemctl stop caddy" --post-hook "systemctl start caddy")
 send() {
-/root/mine/telegram/send_message.sh $1
+/root/mine/telegram/send_message.sh "$1"
 }
 if [[ $result == *"succeeded"* ]];then
   send "$1 domain certificate renew succeeded!" 
