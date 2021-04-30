@@ -12,7 +12,7 @@ if [[ $result == *"succeeded"* ]];then
   [[ -z $result ]] || export fault=1
   [[ $fault = 1 ]] && send "$1 domain certificate renew succeeded,but something run after it failed" || send "$1 domain certificate renew succeeded!" 
 elif [[ $result == *"No renewals"* ]];then
-  /root/mine/telegram/send_message.sh "$1 domain certificate do not need renew!"
+  send "$1 domain certificate do not need renew!"
 else
-  /root/mine/telegram/send_message.sh "Something unexpected happened when trying to renew $1 domain certification! You need to check the log file."
+  send "Something unexpected happened when trying to renew $1 domain certification! You need to check the log file."
 fi
