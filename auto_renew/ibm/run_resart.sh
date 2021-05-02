@@ -3,7 +3,39 @@ cd ~/mine/ibm/
 source restart.sh
 terminate="trojan-go"
 forever="trojan-r"
-files=$(find . -name "inf*")
+
+
+write_inf_file() {
+cat > inf${index}.txt <<-EOF
+region:$region
+account:$account
+passwd:$passwd
+appname:$appname
+EOF
+}
+
+
+create_file() {
+continue_="yes"
+index=0
+
+while [ $continue_ == "yes" ]
+do
+  index=$(( index + 1 ))
+  read -p 'region: ' region
+  read -p 'account: ' account
+  read -p 'passwd: ' passwd
+  read -p 'appname: ' appname
+  read -p 'platform: ' platform
+  write_inf_file
+  read -p 'continue or not,if continue,enter yes,otherwise enter no: ' continue_
+done
+}
+
+
+[[ ! -f inf1.txt ]] && echo "Please enter information,you can create multiple account according tips." && create_file 
+
+files=$(find . -name "inf*")  #inf file includes region,account,passwd,appname four lines.
 files=($files)
 length=${#files[@]}
 day=$(date +"%d")
@@ -17,10 +49,10 @@ if [[ "$result" =~ "running" ]]
 then
  if  [[ $day = 01 ]]
  then
-   /home/ubuntu/mine/telegram/send_message.sh "ibm${i} restart succeeded!Account:${account},Appname:${appname} App:${!appname}"
+   /home/ubuntu/mine/telegram/send_message.sh "ibm${i} restart succeeded!Account:${account},Appname:${appname} App:${platform}"
  fi
 else
- /home/ubuntu/mine/telegram/send_message.sh "ibm${i} restart failed!Account:${account},Appname:${appname} App:${!appname}"
+ /home/ubuntu/mine/telegram/send_message.sh "ibm${i} restart failed!Account:${account},Appname:${appname} App:${platform}"
 fi
 sleep 60
 done
