@@ -4,7 +4,6 @@ send() {
 /root/mine/telegram/send_message.sh "$1"
 }
 if [[ $result == *"succeeded"* ]];then
-  send "$1 domain certificate renew succeeded!" 
   sudo cp /etc/letsencrypt/live/$domain/* /usr/local/etc/xray/ssl/  || export fault=1   # pay attention to domain ,may need change
   chmod 644 /usr/local/etc/xray/ssl/* || export fault=1
   systemctl restart xray
