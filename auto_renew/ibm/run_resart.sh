@@ -49,10 +49,10 @@ if [[ "$result" =~ "running" ]]
 then
  if  [[ $day = 01 ]]
  then
-   /home/ubuntu/mine/telegram/send_message.sh "ibm${i} restart succeeded!Account:${account},Appname:${appname} App:${platform}"
+   ~/mine/telegram/send_message.sh "ibm${i} restart succeeded!Account:${account},Appname:${appname} App:${platform}"
  fi
 else
- /home/ubuntu/mine/telegram/send_message.sh "ibm${i} restart failed!Account:${account},Appname:${appname} App:${platform}"
+ ~/mine/telegram/send_message.sh "ibm${i} restart failed!Account:${account},Appname:${appname} App:${platform}"
 fi
 sleep 60
 done
