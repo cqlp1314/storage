@@ -1,9 +1,6 @@
 #!/bin/bash
 cd ~/mine/ibm/
 source restart.sh
-terminate="trojan-go"
-forever="trojan-r"
-
 
 write_inf_file() {
 cat > inf${index}.txt <<-EOF
@@ -22,11 +19,11 @@ index=0
 while [ $continue_ == "yes" ]
 do
   index=$(( index + 1 ))
-  read -p 'region: ' region
+  read -p 'region(us-south): ' region
   read -p 'account: ' account
   read -p 'passwd: ' passwd
   read -p 'appname: ' appname
-  read -p 'platform: ' platform
+  read -p 'platform(xray): ' platform
   write_inf_file
   read -p 'continue or not,if continue,enter yes,otherwise enter no: ' continue_
 done
