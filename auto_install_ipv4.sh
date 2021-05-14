@@ -5,7 +5,7 @@ mkdir -p /usr/local/etc/trojan-go/
 mkdir -p /root/mine/renew/domain_certificate
 mkdir -p /root/mine/telegram
 read -p "请输入域名:" domain
-read -p "该服务器名称(Euserv2):" server_name
+#read -p "该服务器名称(Euserv2):" server_name
 uuid_xtls="$(cat '/proc/sys/kernel/random/uuid')"
 uuid_ws="$(cat '/proc/sys/kernel/random/uuid')"
 trojan_passwd="$(cat '/proc/sys/kernel/random/uuid' | sed -e 's/-//g' | tr '[:upper:]' '[:lower:]' | head -c $((10+$RANDOM%10)))"
@@ -169,7 +169,7 @@ systemctl start trojan-go
 wget -O /root/mine/renew/domain_certificate/renew.sh https://raw.githubusercontent.com/cqlp1314/storage/main/renew.sh
 wget -O /root/mine/telegram/send_message.sh https://raw.githubusercontent.com/cqlp1314/storage/main/send_message.sh
 chmod +x /root/mine/telegram/send_message.sh /root/mine/renew/domain_certificate/renew.sh
-(crontab -l 2>/dev/null;echo "0 0 5,20 * * cd /root/mine/renew/domain_certificate; ./renew.sh $server_name > log.txt 2>&1")|crontab -
+(crontab -l 2>/dev/null;echo "0 0 5,20 * * cd /root/mine/renew/domain_certificate; ./renew.sh $domain > log.txt 2>&1")|crontab -
 echo "uuid_xtls: $uuid_xtls"
 echo "uuid_ws: $uuid_ws"
 echo "trojan_passwd: $trojan_passwd"
