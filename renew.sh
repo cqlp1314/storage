@@ -1,5 +1,5 @@
 #!/bin/bash
-result=$(/usr/bin/certbot renew --pre-hook "systemctl stop caddy" --post-hook "systemctl start caddy")
+result=$(/usr/bin/certbot renew --cert-name $1 --pre-hook "systemctl stop caddy" --post-hook "systemctl start caddy")
 send() {
 /root/mine/telegram/send_message.sh "$1"
 }
