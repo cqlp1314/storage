@@ -102,7 +102,7 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --standalone --email cqlp2020@gmail.com -d $domain
 read -p "please push enter to continue:" hi
 mkdir -p /usr/local/etc/xray/ssl/
-cp /etc/letsencrypt/live/$domain/* /usr/local/etc/xray/ssl/
+sudo cp /etc/letsencrypt/live/$domain/* /usr/local/etc/xray/ssl/
 chmod 644 /usr/local/etc/xray/ssl/privkey.pem
 systemctl restart xray
 #download website template
