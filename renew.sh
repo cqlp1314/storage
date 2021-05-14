@@ -4,7 +4,7 @@ send() {
 /root/mine/telegram/send_message.sh "$1"
 }
 if [[ $result == *"succeeded"* ]];then
-  sudo cp /etc/letsencrypt/live/$domain/* /usr/local/etc/xray/ssl/  || export fault=1   # pay attention to domain ,may need change
+  sudo cp /etc/letsencrypt/live/$1/* /usr/local/etc/xray/ssl/  || export fault=1   # pay attention to domain ,may need change
   chmod 644 /usr/local/etc/xray/ssl/* || export fault=1
   systemctl restart xray
   result=$(systemctl status xray.service | awk '/failed/{print 1}')
