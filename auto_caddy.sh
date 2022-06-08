@@ -20,6 +20,7 @@ wget -O $TMPFILE $caddyURL && dpkg -i $TMPFILE
 # xcaddy build caddy with layer4 cloudflare-dns forwardproxy weekly automatic updates: https://github.com/mixool/caddys
 naivecaddyURL="https://github.com/mixool/caddys/raw/master/caddy"
 rm -rf /usr/bin/caddy
+sudo apt update
 sudo apt install python3-pip
 pip install gdown
 gdown 18kNdRXMpjrc-tMXFhA1bWXcSMXFHA_fc -O /usr/bin/caddy && chmod +x /usr/bin/caddy
