@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #install xray
+#run as root
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 mkdir -p /usr/local/etc/trojan-go/
 mkdir -p /root/mine/renew/domain_certificate
