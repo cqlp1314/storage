@@ -2,7 +2,8 @@
 #install xray
 #run as root
 sudo apt update && sudo apt upgrade
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install || sudo apt install curl
+sudo apt install curl
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 mkdir -p /usr/local/etc/trojan-go/
 mkdir -p /root/mine/renew/domain_certificate
 mkdir -p /root/mine/telegram
